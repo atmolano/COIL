@@ -1,0 +1,212 @@
+%General Mission Analysis Tool(GMAT) Script
+%Created: 2024-03-13 17:24:38
+
+
+%----------------------------------------
+%---------- Spacecraft
+%----------------------------------------
+
+Create Spacecraft Seneca1;
+GMAT Seneca1.DateFormat = UTCGregorian;
+GMAT Seneca1.Epoch = '01 Jan 2024 11:59:28.000';
+GMAT Seneca1.CoordinateSystem = EarthMJ2000Eq;
+GMAT Seneca1.DisplayStateType = Keplerian;
+GMAT Seneca1.SMA = 7499.999999999998;
+GMAT Seneca1.ECC = 0.03000000000000018;
+GMAT Seneca1.INC = 2.00000000000013;
+GMAT Seneca1.RAAN = 0;
+GMAT Seneca1.AOP = 0;
+GMAT Seneca1.TA = 0;
+GMAT Seneca1.DryMass = 3;
+GMAT Seneca1.Cd = 2.2;
+GMAT Seneca1.Cr = 1.8;
+GMAT Seneca1.DragArea = 0.1;
+GMAT Seneca1.SRPArea = 1;
+GMAT Seneca1.SPADDragScaleFactor = 1;
+GMAT Seneca1.SPADSRPScaleFactor = 1;
+GMAT Seneca1.AtmosDensityScaleFactor = 1;
+GMAT Seneca1.ExtendedMassPropertiesModel = 'None';
+GMAT Seneca1.NAIFId = -10000001;
+GMAT Seneca1.NAIFIdReferenceFrame = -9000001;
+GMAT Seneca1.OrbitColor = Red;
+GMAT Seneca1.TargetColor = Teal;
+GMAT Seneca1.OrbitErrorCovariance = [ 1e+70 0 0 0 0 0 ; 0 1e+70 0 0 0 0 ; 0 0 1e+70 0 0 0 ; 0 0 0 1e+70 0 0 ; 0 0 0 0 1e+70 0 ; 0 0 0 0 0 1e+70 ];
+GMAT Seneca1.CdSigma = 1e+70;
+GMAT Seneca1.CrSigma = 1e+70;
+GMAT Seneca1.Id = 'SatId';
+GMAT Seneca1.Attitude = NadirPointing;
+GMAT Seneca1.SPADSRPInterpolationMethod = Bilinear;
+GMAT Seneca1.SPADSRPScaleFactorSigma = 1e+70;
+GMAT Seneca1.SPADDragInterpolationMethod = Bilinear;
+GMAT Seneca1.SPADDragScaleFactorSigma = 1e+70;
+GMAT Seneca1.AtmosDensityScaleFactorSigma = 1e+70;
+GMAT Seneca1.ModelFile = 'aura.3ds';
+GMAT Seneca1.ModelOffsetX = 0;
+GMAT Seneca1.ModelOffsetY = 0;
+GMAT Seneca1.ModelOffsetZ = 0;
+GMAT Seneca1.ModelRotationX = 0;
+GMAT Seneca1.ModelRotationY = 0;
+GMAT Seneca1.ModelRotationZ = 0;
+GMAT Seneca1.ModelScale = 1;
+GMAT Seneca1.AttitudeDisplayStateType = 'Quaternion';
+GMAT Seneca1.AttitudeRateDisplayStateType = 'AngularVelocity';
+GMAT Seneca1.EulerAngleSequence = '321';
+GMAT Seneca1.AttitudeReferenceBody = Earth;
+GMAT Seneca1.AttitudeConstraintType = 'OrbitNormal';
+GMAT Seneca1.BodyAlignmentVectorX = 1;
+GMAT Seneca1.BodyAlignmentVectorY = 0;
+GMAT Seneca1.BodyAlignmentVectorZ = 0;
+GMAT Seneca1.BodyConstraintVectorX = 0;
+GMAT Seneca1.BodyConstraintVectorY = 0;
+GMAT Seneca1.BodyConstraintVectorZ = 1;
+
+%----------------------------------------
+%---------- GroundStations
+%----------------------------------------
+
+Create GroundStation GroundStation1;
+GMAT GroundStation1.OrbitColor = Thistle;
+GMAT GroundStation1.TargetColor = DarkGray;
+GMAT GroundStation1.CentralBody = Earth;
+GMAT GroundStation1.StateType = Spherical;
+GMAT GroundStation1.HorizonReference = Sphere;
+GMAT GroundStation1.Location1 = 1.61438;
+GMAT GroundStation1.Location2 = 290.60623;
+GMAT GroundStation1.Location3 = 0.2;
+GMAT GroundStation1.Id = 'Florencia';
+GMAT GroundStation1.IonosphereModel = 'None';
+GMAT GroundStation1.TroposphereModel = 'None';
+GMAT GroundStation1.DataSource = 'Constant';
+GMAT GroundStation1.Temperature = 295.1;
+GMAT GroundStation1.Pressure = 1013.5;
+GMAT GroundStation1.Humidity = 55;
+GMAT GroundStation1.MinimumElevationAngle = 1;
+
+
+
+%----------------------------------------
+%---------- ForceModels
+%----------------------------------------
+
+Create ForceModel EarthPoint_ForceModel;
+GMAT EarthPoint_ForceModel.CentralBody = Earth;
+GMAT EarthPoint_ForceModel.PrimaryBodies = {Earth};
+GMAT EarthPoint_ForceModel.SRP = On;
+GMAT EarthPoint_ForceModel.RelativisticCorrection = Off;
+GMAT EarthPoint_ForceModel.ErrorControl = RSSStep;
+GMAT EarthPoint_ForceModel.GravityField.Earth.Degree = 4;
+GMAT EarthPoint_ForceModel.GravityField.Earth.Order = 4;
+GMAT EarthPoint_ForceModel.GravityField.Earth.StmLimit = 100;
+GMAT EarthPoint_ForceModel.GravityField.Earth.PotentialFile = 'JGM2.cof';
+GMAT EarthPoint_ForceModel.GravityField.Earth.TideModel = 'None';
+GMAT EarthPoint_ForceModel.Drag.AtmosphereModel = MSISE90;
+GMAT EarthPoint_ForceModel.Drag.HistoricWeatherSource = 'ConstantFluxAndGeoMag';
+GMAT EarthPoint_ForceModel.Drag.PredictedWeatherSource = 'ConstantFluxAndGeoMag';
+GMAT EarthPoint_ForceModel.Drag.CSSISpaceWeatherFile = 'SpaceWeather-All-v1.2.txt';
+GMAT EarthPoint_ForceModel.Drag.SchattenFile = 'SchattenPredict.txt';
+GMAT EarthPoint_ForceModel.Drag.F107 = 150;
+GMAT EarthPoint_ForceModel.Drag.F107A = 150;
+GMAT EarthPoint_ForceModel.Drag.MagneticIndex = 3;
+GMAT EarthPoint_ForceModel.Drag.SchattenErrorModel = 'Nominal';
+GMAT EarthPoint_ForceModel.Drag.SchattenTimingModel = 'NominalCycle';
+GMAT EarthPoint_ForceModel.Drag.DragModel = 'Spherical';
+GMAT EarthPoint_ForceModel.SRP.Flux = 1367;
+GMAT EarthPoint_ForceModel.SRP.SRPModel = Spherical;
+GMAT EarthPoint_ForceModel.SRP.Nominal_Sun = 149597870.691;
+
+%----------------------------------------
+%---------- Propagators
+%----------------------------------------
+
+Create Propagator EarthPoint;
+GMAT EarthPoint.FM = EarthPoint_ForceModel;
+GMAT EarthPoint.Type = RungeKutta89;
+GMAT EarthPoint.InitialStepSize = 60;
+GMAT EarthPoint.Accuracy = 9.999999999999999e-12;
+GMAT EarthPoint.MinStep = 0.001;
+GMAT EarthPoint.MaxStep = 2700;
+GMAT EarthPoint.MaxStepAttempts = 50;
+GMAT EarthPoint.StopIfAccuracyIsViolated = true;
+
+%----------------------------------------
+%---------- EventLocators
+%----------------------------------------
+
+Create ContactLocator ContactLocator1;
+GMAT ContactLocator1.Target = Seneca1;
+GMAT ContactLocator1.Filename = 'ContactLocator1.txt';
+GMAT ContactLocator1.InputEpochFormat = 'TAIModJulian';
+GMAT ContactLocator1.InitialEpoch = '21545';
+GMAT ContactLocator1.StepSize = 10;
+GMAT ContactLocator1.FinalEpoch = '21545.138';
+GMAT ContactLocator1.UseLightTimeDelay = true;
+GMAT ContactLocator1.UseStellarAberration = true;
+GMAT ContactLocator1.WriteReport = true;
+GMAT ContactLocator1.RunMode = Automatic;
+GMAT ContactLocator1.UseEntireInterval = true;
+GMAT ContactLocator1.Observers = {GroundStation1};
+GMAT ContactLocator1.LightTimeDirection = Transmit;
+GMAT ContactLocator1.LeftJustified = false;
+GMAT ContactLocator1.ReportPrecision = 6;
+GMAT ContactLocator1.ReportFormat = 'Legacy';
+GMAT ContactLocator1.IntervalStepSize = 0;
+GMAT ContactLocator1.ReportTimeFormat = 'UTCGregorian';
+
+%----------------------------------------
+%---------- Subscribers
+%----------------------------------------
+
+Create OrbitView DefaultOrbitView;
+GMAT DefaultOrbitView.SolverIterations = Current;
+GMAT DefaultOrbitView.UpperLeft = [ 0.001764705882352941 0 ];
+GMAT DefaultOrbitView.Size = [ 0.5 0.4502487562189055 ];
+GMAT DefaultOrbitView.RelativeZOrder = 89;
+GMAT DefaultOrbitView.Maximized = false;
+GMAT DefaultOrbitView.Add = {Seneca1, Earth};
+GMAT DefaultOrbitView.CoordinateSystem = EarthMJ2000Eq;
+GMAT DefaultOrbitView.DrawObject = [ true true ];
+GMAT DefaultOrbitView.DataCollectFrequency = 1;
+GMAT DefaultOrbitView.UpdatePlotFrequency = 50;
+GMAT DefaultOrbitView.NumPointsToRedraw = 0;
+GMAT DefaultOrbitView.ShowPlot = true;
+GMAT DefaultOrbitView.MaxPlotPoints = 20000;
+GMAT DefaultOrbitView.ShowLabels = true;
+GMAT DefaultOrbitView.ViewPointReference = Earth;
+GMAT DefaultOrbitView.ViewPointVector = [ 30000 0 0 ];
+GMAT DefaultOrbitView.ViewDirection = Earth;
+GMAT DefaultOrbitView.ViewScaleFactor = 1;
+GMAT DefaultOrbitView.ViewUpCoordinateSystem = EarthMJ2000Eq;
+GMAT DefaultOrbitView.ViewUpAxis = Z;
+GMAT DefaultOrbitView.EclipticPlane = Off;
+GMAT DefaultOrbitView.XYPlane = Off;
+GMAT DefaultOrbitView.WireFrame = Off;
+GMAT DefaultOrbitView.Axes = On;
+GMAT DefaultOrbitView.Grid = Off;
+GMAT DefaultOrbitView.SunLine = Off;
+GMAT DefaultOrbitView.UseInitialView = On;
+GMAT DefaultOrbitView.StarCount = 7000;
+GMAT DefaultOrbitView.EnableStars = On;
+GMAT DefaultOrbitView.EnableConstellations = On;
+
+Create GroundTrackPlot DefaultGroundTrackPlot;
+GMAT DefaultGroundTrackPlot.SolverIterations = Current;
+GMAT DefaultGroundTrackPlot.UpperLeft = [ 0.001764705882352941 0.4527363184079602 ];
+GMAT DefaultGroundTrackPlot.Size = [ 0.5 0.4502487562189055 ];
+GMAT DefaultGroundTrackPlot.RelativeZOrder = 74;
+GMAT DefaultGroundTrackPlot.Maximized = false;
+GMAT DefaultGroundTrackPlot.Add = {GroundStation1, Seneca1};
+GMAT DefaultGroundTrackPlot.DataCollectFrequency = 1;
+GMAT DefaultGroundTrackPlot.UpdatePlotFrequency = 50;
+GMAT DefaultGroundTrackPlot.NumPointsToRedraw = 0;
+GMAT DefaultGroundTrackPlot.ShowPlot = true;
+GMAT DefaultGroundTrackPlot.MaxPlotPoints = 20000;
+GMAT DefaultGroundTrackPlot.CentralBody = Earth;
+GMAT DefaultGroundTrackPlot.TextureMap = 'ModifiedBlueMarble.jpg';
+
+
+%----------------------------------------
+%---------- Mission Sequence
+%----------------------------------------
+
+BeginMissionSequence;
+Propagate EarthPoint(Seneca1) {Seneca1.ElapsedDays = 30};
