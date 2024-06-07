@@ -1,0 +1,45 @@
+General
+	Número de la pieza	(Sin guardar)
+	Nombre de pieza	(Sin guardar)
+	Descripción
+	Nombre de material	(Varios)
+
+Administrar
+	Número de elemento
+	Ciclo de vida
+	Revisión
+	Estado
+	Orden de cambio
+
+Propiedades físicas
+	Mass	1181.091 g
+	Volumen	2.543E+05 mm^3
+	Densidad	0.005 g / mm^3
+	Área	3.760E+05 mm^2
+	Universal X, Y, Z	0.00 mm, 0.00 mm, 0.00 mm
+	Centro de masa	-26.461 mm, 8.314 mm, -57.20 mm
+	Cuadro delimitador
+		Longitud	112.667 mm
+		Anchura	111.269 mm
+		Altura	96.00 mm
+	Momento de inercia en el centro de masa   (g mm^2)
+		Ixx	1.391E+06
+		Ixy	-6327.387
+		Ixz	-10510.101
+		Iyx	-6327.387
+		Iyy	1.467E+06
+		Iyz	11204.598
+		Izx	-10510.101
+		Izy	11204.598
+		Izz	1.565E+06
+	Momento de inercia en origen   (g mm^2)
+		Ixx	5.337E+06
+		Ixy	2.535E+05
+		Ixz	-1.798E+06
+		Iyx	2.535E+05
+		Iyy	6.158E+06
+		Iyz	5.729E+05
+		Izx	-1.798E+06
+		Izy	5.729E+05
+		Izz	2.473E+06
+
