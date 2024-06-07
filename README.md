@@ -30,6 +30,9 @@ En esta sección se encuentran los modelos de las órbitas generados utilizando 
 ### Hiles
 Aquí se almacenan los diagramas de bloques del CubeSat, que proporcionan una representación visual de los distintos subsistemas y componentes del satélite y su interacción.
 
+### MATLAB
+Esta carpeta contiene los archivos relacionados con el control de actitud del CubeSat en MATLAB. Incluye un script con el código de control de actitud, una imagen generada por el código y un archivo de texto con los datos de fusión del CubeSat.
+
 ## Integrantes del Grupo
 
 Este proyecto fue realizado por:
