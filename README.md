@@ -13,6 +13,7 @@ Este repositorio contiene varios modelos y diagramas relacionados con el proyect
   - **Modelo 2**: Modelo realizado para el CubeSat.
 - **GMAT**: Contiene los modelos realizados en GMAT, específicamente los de las órbitas.
 - **Hiles**: Contiene los modelos de los diagramas de bloques del CubeSat.
+- **Matlab**: Contiene los archivos para generar el código de control de actitud de CubeSat.
 
 ## Descripción de Carpetas
 
